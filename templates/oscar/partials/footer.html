@@ -1,0 +1,73 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<footer>
+    {% block footer %}
+       <!-- Footer -->
+    <div class="footer-inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 section-footer">
+            <img class="footer-img" alt="ecommerce Template" src='{% static "img/images/logo-none-bg.png" %}'>
+            <div class="contacts-info">
+              <p>{% trans 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' %}</p>
+              <address>
+              <i class="fa fa-location-arrow"></i> <span>{% trans 'Company, 12/34 - West 21st Street' %},<br>
+                  {% trans 'New York, USA' %}</span>
+              </address>
+              <div class="phone-footer"><i class="fa fa-phone"></i>+1 123 456 98765</div>
+              <div class="email-footer"><i class="fa fa-envelope"></i> <a href="mailto:support@example.com">support@example.com</a> </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 help section-help" style="margin-top: 9%;left: 13%;">
+            <h4>Helpful Links</h4>
+            <ul class="links">
+              <li><a href="{% url 'customer:login' %}">{% trans 'Login/Register' %}</a></li>
+              <li><a href="{% url 'customer:profile-view' %}">{% trans 'Account Settings' %}</a></li>
+              <li><a href="{% url 'customer:address-list' %}">{% trans 'My Addresses' %}</a></li>
+              <li><a href="{% url 'catalogue:index' %}">{% trans 'Products' %}</a></li>
+              <li><a href="{% url 'customer:order-list' %}">{% trans 'My Orders' %}</a></li>
+              <li><a href="{% url 'customer:wishlists-list' %}">{% trans 'Wishlist' %}</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6" style="margin-top: 9%;">
+           <div class="social">
+              <h4>{% trans 'Follow Us' %}</h4>
+              <ul>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="payment-accept">
+            <h4>Secure Payment</h4>
+            <div class="payment-icon">
+              <a href="{% url 'home:how-to-pay' %}" target="_blank">
+                <img src="{% static 'img/images/mada.jpg' %}" title="Mada" alt="mada" style="width: 66px;border-radius: 5px;">
+              </a>
+              <a href="{% url 'home:how-to-pay' %}" target="_blank">
+                <img src="{% static 'img/images/visa.png' %}" title="Visa"  alt="visa">
+              </a>
+              <a href="{% url 'home:how-to-pay' %}" target="_blank">
+                <img src="{% static 'img/images/mastercard.png' %}" title="Master Card" alt="mastercard">
+              </a>  
+              <a href="{% url 'home:how-to-pay' %}" target="_blank">
+                <img src="{% static 'img/images/cash-on-delivery.jpg' %}" title="Cash on Delivery" alt="cashondelivery" style="width: 66px;border-radius: 5px;">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 coppyright text-center">© {% trans '2020 Business Elite, All rights reserved' %}.</div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}
+</footer>

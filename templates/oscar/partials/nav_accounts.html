@@ -1,0 +1,251 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load category_tags %}
+{% load currency_filters %}
+{% load image_tags %}
+{% load reviews_tags %}
+<div id="top_page" xmlns="http://www.w3.org/1999/html">
+    {# This is used in mobile view #}
+    <!-- Mobile Menu -->
+<div id="jtv-mobile-menu">
+  <ul>
+    <li>
+      <div class="mm-search">
+        <form id="mob-search" method="get" action="{% url 'search:search' %}" style="background: #fff;">
+          <div class="input-group">
+              {{ search_form.q }}
+              <button class="btn btn-default"
+                      style="position: absolute;top: -1px;float: left;font-size: 22px;background: none;left: 84%;">
+                  <i class="fa fa-search"></i>
+              </button>
+          </div>
+        </form>
+
+      </div>
+    </li>
+
+      {% category_tree as tree_categories %}
+          <li><a href="/">{% trans 'Home' %}</a></li>
+        {% if tree_categories %}
+          {% for tree_category,info in tree_categories %}
+            <li><a href="{{ tree_category.url }}">{{ tree_category.name }}</a>
+             {% if info.has_children %}
+              <ul>
+                {% else %}
+                {% endif %}
+                 {% for n in tree_category.num_to_close %}
+                </li>
+              </ul>
+                 {% endfor %}
+            </li>
+          {% endfor %}
+        {% endif %}
+
+
+     {% if user.is_authenticated %}
+        <li>
+            {% if num_unread_notifications > 0 %}
+            <a href="{% url 'customer:notifications-inbox' %}">
+                <i class="fa fa-user"></i>  {% trans "Account" %}
+                <span class="label label-warning">{{ num_unread_notifications }}</span>
+            </a>
+            {% else %}
+            <a href="{% url 'customer:summary' %}"><i class="fa fa-user"></i>  {% trans "Account" %}</a>
+            {% endif %}
+        </li>
+        {% if user.is_staff or perms.partner.dashboard_access %}
+        <li><a href="{% url 'dashboard:index' %}"><i class="fa fa-bars"></i> {% trans "Dashboard" %}</a></li>
+        {% endif %}
+        <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="fa fa-sign-out"></i>  {% trans "Logout" %}</a></li>
+
+    {% else %}
+    <li><a id="login_link" href="{% url 'customer:login' %}"><i class="fa fa-sign-in"></i>  {% trans "Login or register" %}</a></li>
+    {% endif %}
+
+  </ul>
+  <div class="top-links">
+    <div class="language-box">
+         {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ redirect_to }}" />
+                {% for language in languages %}
+                    {% if language.code != LANGUAGE_CODE %}
+                        <button type="submit" name="language" value="{{ language.code }}" class="selectpicker" data-width="fit">
+                          <p><i class="fa fa-language"></i> {{ language.name }}</p>
+                        </button>
+                    {% endif %}
+                {% endfor %}
+          </form>
+    </div>
+  </div>
+</div>
+
+
+  <div id="page" >
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-sm-3 col-xs-12 sectio-logo">
+              <div class="logo"><a title="ecommerce Template" href="/"><img class="logo-img" alt="ecommerce Template" src='{% static "img/images/logo-none-bg.png" %}'></a></div>
+              <div class="nav-icon">
+                <div class="mega-container visible-lg visible-md visible-sm">
+                  <div class="navleft-container">
+                    <div class="mega-menu-title">
+                      <h3><i class="fa fa-navicon"></i>{% trans 'Categories' %}</h3>
+                    </div>
+                      {% category_tree as tree_categories %}
+                      <div class="mega-menu-category">
+                          <ul class="nav">
+                              <li class="nosub"><a href="/">{% trans 'Home' %}</a></li>
+                              <li class="nosub"><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a></li>
+                          </ul>
+                          <div id="wrapper">
+                          {% for category, info in tree_categories %}
+                              <ul>
+                                  <li class="upper top">
+                                      <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                                      <span class="icon-right"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></li>
+                                  <li class="lower">
+                                      {% if info.has_children %}
+                                      <ul>
+                                      {% else %}
+                                      {% endif %}
+                                      {% for n in info.num_to_close %}
+                                      </ul>
+                                  </li>
+                                  {% endfor %}
+                              </ul>
+                          {% endfor %}
+                          </div>
+                      <div class="side-banner"><img src='{% static "img/images/top-banner.jpg" %}' alt="Flash Sale" class="img-responsive"></div>
+                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9 col-sm-9 col-xs-12 jtv-rhs-header">
+                <div class="jtv-mob-toggle-wrap">
+                <div class="mm-toggle"><i class="fa fa-reorder"></i><span class="mm-label">Menu</span></div>
+              </div>
+              <div class="jtv-header-box">
+                <div class="search_cart_block">
+                  <div class="search-box hidden-xs">
+                    <form method="get" action="{% url 'search:search' %}" class="navbar-form" style="height: 24px;">
+                      <div class="input-group" style="margin-top: -6px;">
+                          {{ search_form.q }}
+                      </div>
+                      <input class="search-btn-bg"  type="submit" value="{% trans 'Search' %}"/>
+                    </form>
+                  </div>
+                  <div class="right_menu">
+                    <div class="menu_top">
+                      <div class="top-cart-contain pull-right">
+                        <div class="mini-cart">
+                          <div class="basket"><a class="basket-icon" href="#"><i class="fa fa-shopping-basket"></i> {% trans 'Shopping Cart' %} <span></span></a>
+
+                              <div class="top-cart-content">
+                              {% if request.basket.num_lines %}
+                                  <div class="block-subtitle">
+                                    <div class="top-subtotal">
+                                        {% for line in request.basket.all_lines %}
+                                        {{ line.slug }}
+                                        {% endfor %}
+                                        <span class="price">{{ request.basket.total_incl_tax|currency:request.basket.currency }}</span>
+
+                                        </div>
+                                  </div>
+                                  <ul class="mini-products-list" id="cart-sidebar">
+                              {% for line in request.basket.all_lines %}
+                                    <li class="item">
+                                      <div class="item-inner">
+                                      {% with image=line.product.primary_image %}
+                                      {% oscar_thumbnail image.original "100x100" upscale=False as thumb %}
+                                          <a class="product-image" title="{{ line.product.get_absolute_url }}" href="{{ line.product.get_absolute_url }}">
+                                              <img alt="{{ line.product.get_absolute_url }}" src="{{ thumb.url }}">
+                                          </a>
+                                        {% endwith %}
+                                        <div class="product-details">
+                                          <div class="access">
+                                            <a class="btn-remove1" href="#" data-id="{{ forloop.counter0 }}" data-behaviours="remove">Remove</a>
+                                          </div>
+                                          <p class="product-name"><a href="{{ line.product.get_absolute_url }}">{{ line.description }}</a></p>
+                                          <strong>{{ line.quantity }}</strong> x <span class="price">{{ line.unit_price_excl_tax|currency:request.basket.currency }}</span></div>
+                                      </div>
+                                    </li>
+                              {% endfor %}
+                                  </ul>
+                                  <div class="actions">
+                                      <a href="{% url 'basket:summary' %}" class="view-cart"><span>{% trans "View Cart" %}</span> </a>
+                                      <a href="{% url 'checkout:index' %}" class="btn-checkout"><span>{% trans "Checkout" %}</span> </a>
+                                  </div>
+                                {% else %}
+                                  <p style="margin: 10px;text-transform: capitalize;font-size: 13px;color: #000;ont-weight: 500;">
+                                      {% trans "Your basket is empty." %}</p>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="language-box hidden-xs">
+                      {% get_current_language as LANGUAGE_CODE %}
+                      {% get_available_languages as LANGUAGES %}
+                      {% get_language_info_list for LANGUAGES as languages %}
+                      <form action="{% url 'set_language' %}" method="post">
+                          {% csrf_token %}
+                          <input name="next" type="hidden" value="{{ redirect_to }}" />
+                            {% for language in languages %}
+                                {% if language.code != LANGUAGE_CODE %}
+                                    <button type="submit" name="language" value="{{ language.code }}" class="selectpicker" data-width="fit">
+                                      <p><i class="fa fa-language"></i> {{ language.name }}</p> 
+                                    </button>
+                                {% endif %}
+                            {% endfor %}
+                      </form>               
+                    </div>
+                    
+                  </div>
+                </div>
+              <div class="top_section hidden-xs">
+                    <div class="toplinks">
+                        <div class="site-dir hidden-xs"> <a class="hidden-sm" href="#"><i class="fa fa-phone"></i> <strong>{% trans 'Hotline:' %}</strong> +1 123 456 7890</a> <a href="mailto:support@example.com"><i class="fa fa-envelope"></i>  support@example.com</a> </div>
+                        <ul class="links">
+                            {% if user.is_authenticated %}
+                            {% block authenticated %}
+                              <li>
+                                  {% if num_unread_notifications > 0 %}
+                                  <a href="{% url 'customer:notifications-inbox' %}">
+                                      <i class="fa fa-user"></i>  {% trans "Account" %}
+                                      <span class="label label-warning">{{ num_unread_notifications }}</span>
+                                  </a>
+                                  {% else %}
+                                  <a href="{% url 'customer:summary' %}"><i class="fa fa-user"></i>  {% trans "Account" %}</a>
+                                  {% endif %}
+                              </li>
+                              {% if user.is_staff or perms.partner.dashboard_access %}
+                              <li><a href="{% url 'dashboard:index' %}"><i class="fa fa-bars"></i> {% trans "Dashboard" %}</a></li>
+                              {% endif %}
+                              <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="fa fa-sign-out"></i>  {% trans "Logout" %}</a></li>
+                            {% endblock %}
+                          {% else %}
+                          <li><a id="login_link" href="{% url 'customer:login' %}"><i class="fa fa-sign-in"></i>  {% trans "Login or register" %}</a></li>
+                          {% endif %}
+                        </ul>
+                      </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+  </div>
+
+
+

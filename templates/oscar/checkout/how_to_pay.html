@@ -1,0 +1,57 @@
+{% extends "oscar/layout.html" %}
+{% load staticfiles %}
+
+{% load i18n %}
+{% block content %}
+
+    <h2 class="title-pay">How To Pay?</h2>
+    <hr style="border-top: 3px solid #eaac38;">
+    <p class="text-center" style="font-size: 21px;">Your different payment options</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <section class="col-md-5" style="border-right: 2px solid #eaac38;">
+                <div class="group_one">
+                    <h2>Ecommerce Pay</h2>
+                    <div class="images_pay">
+                        <img class="img-pay" src="{% static 'img/images/mada.jpg' %}" style="width:15%;margin-left: 3%;">
+                        <img class="img-pay" src="{% static 'img/images/visa.png' %}" style="width: 64px;">
+                    </div>    
+                    <p class="text-pay">Pay with Your Card Through Ecommerce Pay</p>
+                    <span class="way_a_pay">1.Easy and safe payment</span>
+                    <span class="way_a_pay">2.No cash required</span><br>
+                    <button type="button" class="btn btn-primary btn_way">Discover</button><br>
+                </div>    
+            </section>
+            <div class="col-md-2"></div>
+            <section class="col-md-4">
+                <div class="group_two">
+                    <h2>Pay on Delivery</h2>
+                    <div class="images_pay">
+                        <img class="img-pay" src="{% static 'img/images/cash-on-delivery.jpg' %}" style="width: 80px;    margin-left: 10%;">
+                    </div>    
+                    <p class="text-pay">Pay cash at your doorstep</p>
+                    <span class="way_a_pay">No risk for you, shop like a store, but at home!</span><br>
+                    <button type="button" class="btn btn-primary btn_way">Discover</button><br>
+                </div>    
+            </section>
+            
+            <hr/>
+        </div>
+
+        <div class="section_two">
+            <h3 class="text-center">How to select payment options during checkout</h3>
+            <p class="text-center">During the payment step, you can choose between<span>"Pay on Delivery"</span> and 
+                <span>"Ecommerce Pay"</span> from the menu on the left  to either proceed with pay on delivery or pay with credit card.
+            </p>
+        </div>    
+
+        <div class="section_payment">
+            <h2 class="title-pay">It's Simple, It's Easy and It's Safe.</h2>
+            <button type="button" class="btn payment-button">Shop Now ></button><br>
+        </div>
+     
+    </div>
+   
+
+{% endblock %}

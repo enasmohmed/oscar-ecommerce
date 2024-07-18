@@ -1,0 +1,32 @@
+{% extends "oscar/layout.html" %}
+
+{% comment %}
+Keep the same header and footer as the standard layout template but override the 
+main content area to split it into a sidebar and a content block
+{% endcomment %}
+{% block content_wrapper %}
+<div class="main-container col2-right-layout" style="margin-bottom: 3%;font-size: 13px;">
+    <div class="main container">
+        {% block breadcrumbs %}{% endblock %}
+        <div class="row">
+
+            <aside class="prof-side col-sm-4 col-md-3" style="float: right;">
+                {% block column_left %}{% endblock %}
+            </aside>
+
+            <div >
+                {% block header %}
+                <div class="page action">
+                    <h1>{% block headertext %}{% endblock %}</h1>
+                </div>
+                {% endblock %}
+
+                {% include "oscar/partials/alert_messages.html" %}
+
+                {% block content %}{% endblock %}
+            </div>
+
+        </div><!-- /row -->
+    </div><!-- /page_inner -->
+</div><!-- /container-fluid -->
+{% endblock %}

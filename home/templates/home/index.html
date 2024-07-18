@@ -1,0 +1,405 @@
+{% extends "oscar/layout.html" %}
+{% load staticfiles %}
+{% load basket_tags %}
+{% load category_tags %}
+{% load product_tags %}
+{% load reviews_tags %}
+{% load image_tags %}
+{% load display_tags %}
+{% load i18n %}
+{% block content %}
+  <!-- Revslider -->
+  <div class="container jtv-home-revslider">
+    <div class="row">
+      <div class="col-lg-9 col-sm-9 col-xs-12 jtv-main-home-slider">
+        <div id='rev_slider_1_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
+          <div id='rev_slider_1' class='rev_slider fullwidthabanner'>
+              <ul>
+                <li data-transition='slotzoom-horizontal' data-slotamount='7' data-masterspeed='1000'
+                  data-thumb="{% static 'images/slider/slide-img1.jpg' %}"><img src="{% static 'img/images/slider/slide-img1.jpg' %}" alt="slider image1"
+                    data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
+                  <div class="info">
+                    <div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-x='0' data-y='165'
+                      data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone'
+                      data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:2;white-space:nowrap;'><span>Shop The Trend</span></div>
+                    <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-x='0' data-y='220' data-endspeed='500'
+                      data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:3;white-space:nowrap;'>Amazing Chance!</div>
+                    <div class='tp-caption Title sft  tp-resizeme ' data-x='0' data-y='300' data-endspeed='500'
+                      data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:4;white-space:nowrap;'>Our new arrivals can't wait to meet you.</div>
+                    <div class='tp-caption sfb  tp-resizeme ' data-x='0' data-y='350' data-endspeed='500'
+                      data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:4;white-space:nowrap;'><a href='#' class="buy-btn">Browse Now</a></div>
+                  </div>
+                </li>
+                <li data-transition='slotzoom-horizontal' data-slotamount='7' data-masterspeed='1000'
+                  data-thumb="{% static 'img/images/slider/slide-img3.jpg' %}"><img src="{% static 'img/images/slider/slide-img3.jpg' %}" alt="slider image2"
+                    data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
+                  <div class="info">
+                    <div class='tp-caption ExtraLargeTitle sft slide2  tp-resizeme ' data-x='45' data-y='165'
+                      data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone'
+                      data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:2;white-space:nowrap;padding-right:0px'><span>Spring Fashion</span></div>
+                    <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-x='45' data-y='220' data-endspeed='500'
+                      data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:3;white-space:nowrap;'>Be Summer Ready</div>
+                    <div class='tp-caption Title sft  tp-resizeme ' data-x='45' data-y='300' data-endspeed='500'
+                      data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:4;white-space:nowrap;'>Identify your Look, Define your Style!</div>
+                    <div class='tp-caption sfb  tp-resizeme ' data-x='45' data-y='350' data-endspeed='500'
+                      data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:4;white-space:nowrap;'><a href='#' class="buy-btn">Join us</a></div>
+                  </div>
+                </li>
+                <li data-transition='slotzoom-horizontal' data-slotamount='7' data-masterspeed='1000'
+                  data-thumb="{% static 'img/images/slider/slide-img2.jpg' %}"><img src="{% static 'img/images/slider/slide-img2.jpg' %}" alt="slider image3"
+                    data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
+                  <div class="info">
+                    <div class='tp-caption ExtraLargeTitle sft slide2  tp-resizeme ' data-x='45' data-y='165'
+                      data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone'
+                      data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:2;white-space:nowrap;padding-right:0px'><span>Big Sale</span></div>
+                    <div class='tp-caption LargeTitle sfl  tp-resizeme ' data-x='45' data-y='220' data-endspeed='500'
+                      data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:3;white-space:nowrap;'>New Fashion</div>
+                    <div class='tp-caption Title sft  tp-resizeme ' data-x='45' data-y='300' data-endspeed='500'
+                      data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:4;white-space:nowrap;'>Look great & feel amazing in our stunning dresses.</div>
+                    <div class='tp-caption sfb  tp-resizeme ' data-x='45' data-y='350' data-endspeed='500'
+                      data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
+                      data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'
+                      style='z-index:4;white-space:nowrap;'><a href='#' class="buy-btn">Buy Now</a></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="banner-block"> <a href="#"> <img src='{% static "img/images/banner1.jpg" %}' alt=""> </a>
+          <div class="text-des-container pad-zero">
+            <div class="text-des">
+              <p>{% trans 'SOON' %}</p>
+              <h2>{% trans 'Accessories' %}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="banner-block"> <a href="#"> <img src='{% static "img/images/banner2.jpg" %}' alt=""> </a>
+          <div class="text-des-container">
+            <div class="text-des">
+              <p>{% trans 'SOON' %}</p>
+              <h2>{% trans 'Accessories' %}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Support Policy Box -->
+  <div class="container">
+    <div class="support-policy-box">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12 section-two">
+          <div class="support-policy"> <i class="fa fa-truck"></i>
+            <div class="content">{% trans 'Delivery within Saudi cities' %}</div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 section-two">
+          <div class="support-policy"> <i class="fa fa-whatsapp"></i>
+              <div class="content"><a href="#" >{% trans 'Need Help +1 123 456 7890' %}</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 section-two">
+          <div class="support-policy"> <i class="fa fa-refresh"></i>
+            <div class="content">{% trans 'You can Exchange within 24 hours' %}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main Container -->
+  <section class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="col-main">
+            <div class="jtv-featured-products">
+               <div class="slider-items-products">
+                <div class="jtv-new-title">
+                  <h2>{% trans 'recommended for you' %}</h2>
+                </div>
+                {% if products_featured %}
+                  <div id="featured-slider" class="product-flexslider hidden-buttons">
+                    <div class="slider-items slider-width-col4 products-grid">
+                    {% for product in products_featured %}
+                      <div class="item">
+                        <div class="item-inner">
+                          <div class="item-img">
+                            <div class="item-img-info">{% render_product product %}
+                                {% include "oscar/partials/pagination.html" %}
+                            <div class="new-label new-top-left">{% trans 'new' %}</div>
+                            <div class="sale-label sale-top-right">{% trans 'Sale' %}</div>
+                            </div>
+                        </div>
+
+                      </div>
+                      </div>
+                    {% endfor %}
+                    </div>
+                  </div>
+                {% else %}
+                  <p class="nonefound">{% trans "No products found." %}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <!-- Trending Products Slider -->
+          <div class="jtv-trending-products">
+            <div class="slider-items-products">
+              <div class="jtv-new-title">
+                <h2>{% trans 'hot this week ' %}</h2>
+              </div>
+              {% if products_popular %}
+                <div id="trending-slider" class="product-flexslider hidden-buttons">
+                  <div class="slider-items slider-width-col4 products-grid">
+                    {% for product in products_popular %}
+                      <div class="item">
+                        <div class="item-inner">
+                          <div class="item-img">
+                            <div class="item-img-info">{% render_product product %}
+                                {% include "oscar/partials/pagination.html" %}
+                              <div class="new-label new-top-left">{% trans 'new' %}</div>
+                              <div class="sale-label sale-top-right">{% trans 'Sale' %}</div>
+                            </div>
+                        </div>
+
+                      </div>
+                      </div>
+                    {% endfor %}
+                    </div>
+                </div>
+              {% else %}
+                <p class="nonefound">{% trans "No products found." %}</p>
+              {% endif %}
+            </div>
+          </div>
+          <!-- End Trending Products Slider -->
+
+            <!-- Latest Blog -->
+          <div class="jtv-latest-blog">
+            <div class="jtv-new-title">
+              <h2>{% trans 'Business Elite daily news' %}</h2>
+            </div>
+            <div class="row">
+              <div class="blog-outer-container">
+                <div class="blog-inner">
+                  <div class="col-xs-12 col-sm-4 blog-preview_item">
+                    <div class="entry-thumb jtv-blog-img-hover"> <a href=""> <img alt="Blog" src="{% static 'img/images/blog-img1.jpg' %}" style="width: 100%;"> </a> </div>
+                    <h4 class="blog-preview_title"><a href="/">{% trans 'The Quartz Watch' %}</a></h4>
+                    <div class="blog-preview_info">
+                      <div class="blog-preview_desc">{% trans 'A quartz watch movement is an electronic movement..  it works by using the vibrating mineral called quartz. Most quartz watches are battery powered.' %} </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 blog-preview_item">
+                    <div class="entry-thumb jtv-blog-img-hover"> <a href=""> <img alt="Blog" src="{% static 'img/images/blog-img1.jpg' %}" style="width: 100%;"> </a> </div>
+                    <h4 class="blog-preview_title"><a href="">{% trans 'Trending Watches Now' %}</a></h4>
+                    <div class="blog-preview_info">
+                      <div class="blog-preview_desc">{% trans 'Rolex: he biggest brand of them all, got an incredible boost in popularity – and not without reason. The company invested significantly in innovation in the 2000s.' %}</div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 blog-preview_item">
+                    <div class="entry-thumb jtv-blog-img-hover"> <a href=""> <img alt="Blog" src="{% static 'img/images/blog-img1.jpg' %}" style="width: 100%;"> </a> </div>
+                    <h4 class="blog-preview_title"><a href="">{% trans 'Step-by-step How to Choose the Best Watches for Women' %}</a></h4>
+                    <div class="blog-preview_info">
+                      <div class="blog-preview_desc">{% trans 'Shopping for a new watch can be an overwhelming affair if you don’t now what you are looking for.The store will help you choose the best watches' %}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Latest Blog -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Collection Banner -->
+  <div class="jtv-collection-area">
+    <div class="container">
+      <div class="column-right pull-left col-sm-4 no-padding"> <a href="#"> <img src="{% static 'img/images/women-top.jpg' %}" alt="Top Collections"> </a>
+        <div class="col-right-text">
+          <h5 class="text-uppercase">Top Collections <span> 35% </span> get it now</h5>
+        </div>
+      </div>
+      <div class="column-left pull-right col-sm-8 no-padding">
+        <div class="column-left-top">
+          <div class="col-left-top-left pull-left col-sm-8 no-padding"> <a href="#"> <img src="{% static 'img/images/men-suits.jpg' %}" alt="Men's Suits"> </a>
+            <div class="col-left-top-left-text">
+              <h5 class="text-uppercase">Dressing for your Wedding</h5>
+              <h3 class="text-uppercase">Men's Suits</h3>
+              <h5 class="text-uppercase">Look Good, Feel Good</h5>
+            </div>
+          </div>
+          <div class="col-left-top-right pull-right col-sm-4 no-padding"> <a href="#"> <img src="{% static 'img/images/footwear.jpg' %}" alt="footwear"> </a>
+            <div class="col-left-top-right-text text-center">
+              <h5 class="text-uppercase">Footwear Fashion Sale</h5>
+              <h3>50%</h3>
+              <h5 class="text-uppercase">Buy 1, Get 1</h5>
+            </div>
+          </div>
+        </div>
+        <div class="column-left-bottom col-sm-12 no-padding">
+          <div class="col-left-bottom-left pull-left col-sm-4 no-padding"> <a href="#"> <img src="{% static 'img/images/handbag.jpg' %}" alt="Handbag"> </a>
+            <div class="col-left-bottom-left-text">
+              <h5 class="text-uppercase">What's New?</h5>
+              <h3 class="text-uppercase">Bag's</h3>
+              <h5 class="text-uppercase">Everyday<br>
+                Low Prices</h5>
+            </div>
+          </div>
+          <div class="col-left-bottom-right pull-right col-sm-8 no-padding"> <a href="#"> <img src="{% static 'img/images/watch-banner.jpg' %}" alt="Watch"> </a>
+            <div class="col-left-bottom-right-text">
+              <h5 class="text-uppercase">Never Miss a Second</h5>
+              <h3 class="text-uppercase">Watch</h3>
+              <h5 class="text-uppercase">Time to buy a watch!</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- collection area end -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-xs-12">
+        <div class="jtv-hot-deal-product">
+        <div class="jtv-new-title">
+              <h2>{% trans 'Deals Of The Day' %}</h2>
+            </div>
+          {% if offer_count > 0 %}  
+            <ul class="products-grid">
+              {% for offer in offer %}
+                  {% for product in offer.products|slice:":12" %}
+              <li class="right-space two-height item">
+                <div class="item-inner">
+                  <div class="item-img">
+                    <div class="item-img-info">
+                      {% with image=product.primary_image %}
+                          {% oscar_thumbnail image.original "x425" upscale=False as thumb %}
+                      <a href="{{ product.get_absolute_url }}"  class="product-image">
+                        <img src='{{ thumb.url }}' alt="{{ product.get_title }}">
+                      </a>
+                      {% endwith %}
+                      <div class="hot-label hot-top-left">Hot Deal</div>
+                      </div>
+                      <div class="jtv-timer-box">
+                    <div class="countbox_1 timer-grid"></div>
+                  </div>
+                  </div>
+
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title"> <a  href="{% url 'offer:detail' slug=offer.slug %}">{{ offer.name }} </a> </div>
+                      <div class="item-content">
+                        <div class="item-price">
+                        </div>
+                        <div class="actions">
+                          <div class="add_cart">
+                            {% if not product.is_parent and not product.has_options %}
+                                {% include "oscar/catalogue/partials/add_to_basket_form_compact.html" %}
+                              {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+                  {% endfor %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12 hidden-sm">
+        <div class="sidebar-banner">
+        <div class="jtv-top-banner"> <a href="#"> <img src="{% static 'img/images/banner3.jpg' %}" alt="banner"> </a> </div>
+        <div class="jtv-top-banner"> <a href="#"> <img src="{% static 'img/images/banner4.jpg' %}" alt="banner"> </a> </div></div>
+      </div>
+      <!-- Top Seller Slider -->
+      <div class="col-sm-4 col-xs-12">
+        <div class="jtv-top-products">
+          <div class="slider-items-products">
+            <div class="jtv-new-title">
+              <h2>{% trans 'Top Seller' %}</h2>
+            </div>
+            {% if top_seller %}
+            <div id="top-products-slider" class="product-flexslider hidden-buttons">
+              <div class="slider-items slider-width-col4 products-grid">
+                {% for product in top_seller %}
+                   <div class="item">
+                  <div class="item-inner">
+                    <div class="item-img">
+                      <div class="item-img-info">{% render_product product %}
+                         {% include "oscar/partials/pagination.html" %}
+                            <div class="new-label new-top-left">new</div>
+                            <div class="sale-label sale-top-right">{% trans 'Sale' %}</div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% else %}
+                <p class="nonefound">{% trans "No products found." %}</p>
+             {% endif %}
+          </div>
+        </div>
+        <!-- End Top Seller Slider -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Brand Logo -->
+  <div class="container jtv-brand-logo-block">
+    <div class="jtv-brand-logo">
+      <div class="slider-items-products">
+        <div id="jtv-brand-logo-slider" class="product-flexslider hidden-buttons">
+          <div class="slider-items slider-width-col6">
+            <div class="item"><a href="#"><img src='{% static "img/images/brand1.PNG" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand2.png" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand3.png" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand4.png" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand5.png" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand6.png" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand7.png" %}' alt="Brand Logo"></a> </div>
+            <div class="item"><a href="#"><img src='{% static "img/images/brand8.png" %}' alt="Brand Logo"></a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    oscar.search.init();
+{% endblock %}

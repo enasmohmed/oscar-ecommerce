@@ -1,0 +1,251 @@
+{% extends "oscar/base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block styles %}
+    {% if use_less %}
+<!--        <link rel="stylesheet/less" type="text/css" href="{% static 'less/styles.less' %}" />-->
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+<!--        <link rel="stylesheet" type="text/css" href="{% static 'css/print.css' %}" media="print" />-->
+<!--        <link rel="stylesheet" type="text/css" href="{% static 'oscar/css/styles.css' %}" />-->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    {% endif %}
+
+        <!-- Moyasar Styles -->
+    <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.5.0/moyasar.css">
+
+    <!-- Moyasar Scripts -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch"></script>
+    <script src="https://cdn.moyasar.com/mpf/1.5.0/moyasar.js"></script>
+
+
+    {% get_current_language as LANGUAGE_CODE %}
+    {% if LANGUAGE_CODE == 'ar' %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/styles-rtl.css'%}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/revslider-rtl.css'%}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/jtv-mob-menu-rtl.css'%}" />
+    {% endif %}
+
+   {% endblock %}
+
+{% block layout %}
+    {# Top-horizontal bar with account, notifictions, dashboard links #}
+    {% include "oscar/partials/nav_accounts.html" %}
+
+    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
+    <header class="header container">
+        <div class="page_inner">
+            <div class="row">
+<!--                {% include "oscar/partials/brand.html" %}-->
+                {# Mini-basket wrapped in a block so some templates can now display it #}
+<!--                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}-->
+            </div>
+        </div>
+
+
+
+    </header>
+
+    {# Main content of page - other layout templates may override this block #}
+    {% block content_wrapper %}
+        <div class="container page">
+            <div class="page_inner">
+                {% block breadcrumbs %}{% endblock %}
+                {% block header %}
+                    <div class="page action">
+                        <h1>{% block headertext %}{% endblock %}</h1>
+                    </div>
+                {% endblock %}
+                {% include "oscar/partials/alert_messages.html" %}
+                {% block subnavigation %}{% endblock %}
+                <div class="content">
+                    {% block subheader %}{% endblock subheader %}
+
+                    {# Div exists for AJAX updates to entire content section #}
+                    <div id="content_inner">{% block content %}{% endblock %}</div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% include "oscar/partials/footer.html" %}
+{% endblock %}
+
+{% block cdn_scripts %}
+  {{ block.super }}
+  {% if use_less and debug %}
+    {# Load the on-the-fly less compiler. Never do this in production. #}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+  {% endif %}
+{% endblock %}
+
+{# Local scripts #}
+{% block scripts %}
+    {{ block.super }}
+    <!-- Twitter Bootstrap -->
+    <!-- Oscar -->
+{% comment %} <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-7159573d-8d61-4871-a0f1-db0515451be1"></div> {% endcomment %}
+<!--<script src="//code.tidio.co/r9cgop1k9yzbrfyavpbyaqs8bp2ofczb.js" async></script>-->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/revslider.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/mob-menu.js' %}"></script>
+<script src="{% static 'js/countdown.js' %}"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}"></script>
+<script src="{% static 'js/cloud-zoom.js' %}"></script>
+<script src="{% static 'js/oscar/ui.js' %}"></script>
+<script>
+    jQuery(document).ready(function(){
+    jQuery('#rev_slider_1').show().revolution({
+    dottedOverlay: 'none',
+    delay: 5000,
+    startwidth: 858,
+    startheight: 500,
+
+    hideThumbs: 200,
+    thumbWidth: 200,
+    thumbHeight: 50,
+    thumbAmount: 2,
+
+    navigationType: 'thumb',
+    navigationArrows: 'solo',
+    navigationStyle: 'round',
+
+    touchenabled: 'on',
+    onHoverStop: 'on',
+
+    swipe_velocity: 0.7,
+    swipe_min_touches: 1,
+    swipe_max_touches: 1,
+    drag_block_vertical: false,
+
+    spinner: 'spinner0',
+    keyboardNavigation: 'off',
+
+    navigationHAlign: 'center',
+    navigationVAlign: 'bottom',
+    navigationHOffset: 0,
+    navigationVOffset: 20,
+
+    soloArrowLeftHalign: 'left',
+    soloArrowLeftValign: 'center',
+    soloArrowLeftHOffset: 20,
+    soloArrowLeftVOffset: 0,
+
+    soloArrowRightHalign: 'right',
+    soloArrowRightValign: 'center',
+    soloArrowRightHOffset: 20,
+    soloArrowRightVOffset: 0,
+
+    shadow: 0,
+    fullWidth: 'on',
+    fullScreen: 'off',
+
+    stopLoop: 'off',
+    stopAfterLoops: -1,
+    stopAtSlide: -1,
+
+    shuffle: 'off',
+
+    autoHeight: 'off',
+    forceFullWidth: 'on',
+    fullScreenAlignForce: 'off',
+    minFullScreenHeight: 0,
+    hideNavDelayOnMobile: 1500,
+
+    hideThumbsOnMobile: 'off',
+    hideBulletsOnMobile: 'off',
+    hideArrowsOnMobile: 'off',
+    hideThumbsUnderResolution: 0,
+
+    hideSliderAtLimit: 0,
+    hideCaptionAtLimit: 0,
+    hideAllCaptionAtLilmit: 0,
+    startWithSlide: 0,
+    fullScreenOffsetContainer: ''
+    });
+    });
+</script>
+<!-- Hot Deals Timer -->
+<script>
+    var dthen1 = new Date("12/25/17 11:59:00 PM");
+    start = "08/04/15 03:02:11 AM";
+    start_date = Date.parse(start);
+    var dnow1 = new Date(start_date);
+    if (CountStepper > 0)
+    ddiff = new Date((dnow1) - (dthen1));
+    else
+    ddiff = new Date((dthen1) - (dnow1));
+    gsecs1 = Math.floor(ddiff.valueOf() / 1000);
+
+    var iid1 = "countbox_1";
+    CountBack_slider(gsecs1, "countbox_1", 1);
+</script>
+<script>
+
+    // Dropdown Menu
+    var dropdown = document.querySelectorAll('.dropdown');
+    var dropdownArray = Array.prototype.slice.call(dropdown,0);
+    dropdownArray.forEach(function(el){
+        var button = el.querySelector('a[data-toggle="dropdown"]'),
+                menu = el.querySelector('.dropdown-menu'),
+                arrow = button.querySelector('i.icon-arrow');
+
+
+        button.onclick = function(event) {
+            if(!menu.hasClass('show')) {
+                menu.classList.add('show');
+                menu.classList.remove('hide');
+                arrow.classList.add('open');
+                arrow.classList.remove('close');
+                event.preventDefault();
+            }
+            else {
+                menu.classList.remove('show');
+                menu.classList.add('hide');
+                arrow.classList.remove('open');
+                arrow.classList.add('close');
+                event.preventDefault();
+            }
+        };
+    })
+
+    Element.prototype.hasClass = function(className) {
+        return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
+    };
+
+</script>
+<script>
+    $(".upper").click(function () {
+    // Adding a class to the upper list item to handle the icon animation and background change
+    $(this).toggleClass("collapsed");
+
+    var collapsedMenu = this.nextElementSibling;
+
+    // If the submenu is already collapsed, hide
+    if (collapsedMenu.style.maxHeight) {
+        collapsedMenu.style.maxHeight = null;
+
+        // Else, set its max-height to its scroll-height.
+    } else {
+        collapsedMenu.style.maxHeight = collapsedMenu.scrollHeight + "px";
+    }
+    });
+</script>
+
+{% endblock %}
+
+{% block extrascripts %}
+    {% include "oscar/partials/extrascripts.html" %}
+    {{ block.super }}
+{% endblock %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    oscar.init();
+{% endblock %}

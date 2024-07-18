@@ -1,0 +1,73 @@
+{% load reviews_tags %}
+{% load i18n %}
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-center m-auto">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for carousel items -->
+          <div class="carousel-inner">
+              <a href="{{ review.get_absolute_url }}">
+              <h3 class="star-rating {{ review.score|as_stars }} text-center">{{ review.title }}<br>
+                <span>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                </span>
+              </h3>
+              </a>
+            <div class="item carousel-item  active">
+              <p class="testimonial">{{ review.body|striptags }}</p>
+              <p class="overview"><b>{% if review.user == user %}
+                {% blocktrans with review_date=review.date_created %}
+                Reviewed by you on {{ review_date }}
+                {% endblocktrans %}
+            {% else %}
+                {% blocktrans with name=review.reviewer_name review_date=review.date_created %}
+                    Reviewed by <strong>{{ name }}</strong>
+                {% endblocktrans %}
+            {% endif %}
+            | <a href="{% url 'catalogue:reviews-detail' product_slug=product.slug product_pk=product.pk pk=review.pk %}">{% trans 'Permalink' %}</a>
+            </b></p>
+              <p>{{ review.date_created }}</p>
+                {% if review|may_vote:user %}
+                    <p>{% trans "Is this review helpful?" %}</p>
+                    <form action="{% url 'catalogue:reviews-vote' product_slug=product.slug product_pk=product.pk pk=review.pk %}" method="post" class="vote_agree" >
+                        {% csrf_token %}
+                        <input type="hidden" name="delta" value="1"/>
+                        <button type="submit" class="btn-success" data-loading-text="{% trans 'Submitting...' %}">{% trans "Yes" %}</button>
+                    </form>
+                    <form  action="{% url 'catalogue:reviews-vote' product_slug=product.slug product_pk=product.pk pk=review.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="delta" value="-1"/>
+                        <button type="submit" class="btn-danger" data-loading-text="{% trans 'Submitting...' %}">{% trans "No" %}</button>
+                    </form>
+                {% endif %}
+
+                 <p>
+                    {% if review.has_votes %}
+                        {% blocktrans with num_up_votes=review.num_up_votes count num_votes=review.total_votes %}
+                        <strong>{{ num_up_votes }}</strong> of {{ num_votes }} customer found this useful
+                        {% plural %}
+                        <strong>{{ num_up_votes }}</strong> of {{ num_votes }} customers found this useful
+                        {% endblocktrans %}
+                    {% else %}
+                        {% trans "This review has no votes." %}
+                    {% endif %}
+                </p>
+            </div>
+          </div>
+          <!-- Carousel controls -->
+          <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <i class="fa fa-angle-double-left"></i>
+          </a>
+          <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,431 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+</head>
+
+<body>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
+/** GLOBAL **/
+
+
+/* TYPOGRAPHY */
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.375rem;
+}
+h4 {
+  font-size: 1.125rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.875rem;
+}
+p {
+  font-size: 1.125rem;
+  font-weight: 200;
+  line-height: 1.8;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-heavy {
+  font-weight: 700;
+}
+/* POSITIONING */
+
+.left {
+  text-align: left;
+}
+.right {
+  float: right;
+  text-align: right;
+}
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.justify {
+  text-align: justify;
+}
+/** standard padding**/
+
+.no-padding {
+  padding: 0px;
+}
+.standard-padding {
+  padding: 20px;
+}
+.standard-padding-right {
+  padding-right: 20px;
+}
+.standard-padding-left {
+  padding-left: 20px;
+}
+.standard-padding-right {
+  padding-left: 20px;
+}
+.standard-padding-top {
+  padding-top: 20px;
+}
+.standard-padding-bottom {
+  padding-bottom: 20px;
+}
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.row {
+  position: relative;
+  width: 100%;
+}
+.row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.hidden-sm {
+  display: none;
+}
+.invoice-box {
+  background: #ffffff;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 25px;
+  border: 1px solid #002336;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  line-height: 24px;
+  color: #002336;
+}
+.title {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #8B8B8B;
+  margin-bottom: 4px;
+}
+.infoblock {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+.titles {
+  padding-top: 4px;
+  margin-top: 20px;
+  background: #DCDCDC;
+  font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+  .invoice-box table tr.top table td {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  .invoice-box table tr.information table td {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
+/** RTL **/
+
+.rtl {
+  direction: rtl;
+  font-family: "Lato", Tahoma, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+.rtl table {
+  text-align: right;
+}
+.rtl table tr td:nth-child(2) {
+  text-align: left;
+}
+.eqWrap {
+  display: flex;
+}
+.eq {
+  padding: 10px;
+}
+.item:nth-of-type(odd) {
+  background: #F9F9F9;
+}
+.item:nth-of-type(even) {
+  background: #fff;
+}
+.equalHW {
+  flex: 1;
+}
+.equalHM {
+  width: 32%;
+}
+.equalHMR {
+  width: 32%;
+  margin-bottom: 2%;
+}
+table.table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  text-align: left;
+  padding: 0.25em;
+}
+.table tr {
+  border-bottom: 1px solid #DDD;
+}
+button:hover {
+  box-shadow: 0 0 4px rgba(3, 3, 3, 0.8);
+  opacity: 0.9;
+}
+.invoice-box .logo-img{
+     width: 46%;
+    margin-top: -13%;
+    margin-bottom: -14%;
+    margin-left: -55%;
+}
+
+.massge{
+    margin-top: 29px;
+    text-align: center;
+    font-size: 21px;
+    text-transform: capitalize;
+    color: #000;
+    font-weight: bold;
+}
+
+
+.Social-media{
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+}
+.Social-media a{
+  display: flex;
+  background: #e3edf7;
+  height: 45px;
+  width: 45px;
+  margin: 0 15px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+              -6px -6px 10px -1px rgba(255,255,255,0.7);
+  border: 1px solid rgba(0, 0, 0, 0);
+  transition: transform 0.5s
+}
+.Social-media a i{
+  font-size: 50px
+  color:#777;
+  transition: transform 0.5s;
+}
+.Social-media a:hover{
+  box-shadow:inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+              inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                    -0.5px -0.5px 0px -1px rgba(255,255,255,1),
+                    0.5px 0.5px 0px rgba(0,0,0,0.15),
+                    0px 12px 10px -10px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  transform: translateY(2px);
+}
+.Social-media a:hover i{
+  transform: scale(0.90);
+}
+.Social-media a:hover .fa-facebook{
+  color: #3b5998;
+}
+.Social-media a:hover .fa-twitter{
+  color: #00acee;
+}
+.Social-media a:hover .fa-whatsapp{
+  color: #4fce5d;
+}
+.Social-media a:hover .fa-instagram{
+  color: #f14843;
+}
+.Social-media a:hover .fa-youtube{
+  color: #f00;
+}
+.card-footer{
+    padding: .75rem 1.25rem;
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+
+  </style>
+
+  <div class="invoice-box">
+    <div class="container">
+      <div class="row">
+        <div class="equalHWrap eqWrap top">
+          <div class="equalHW eq center logo-block">
+            <a href="#"><img class="logo-img"  src='{% static "img/images/logo.png" %}' ></a><br>
+              <a href="#"><h2 class="right no-padding" id="InvoiceSumExVat" style="margin-right: 51%;font-size: 21px;margin-top: 1%;color: #000;font-style: italic;margin-bottom: 0%;">Ecommerce</h2></a>
+          </div>
+          <div class="equalHW eq title-block" style="margin-top: 5%;margin-bottom: 2%;">
+            <h3 class="right no-padding" id="InvoiceSumExVat" style="margin:0px;">Invoice# {{ number }} </h3><br>
+            <p class="right no-padding" id="InvoiceSumExVat" style="margin:0px;"> Invoice Date: {{ order.date_placed }}</p>
+          </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+          <div class="equalHWrap eqWrap nomargin-nopadding to-block">
+            <div class="equalHW eq nomargin-nopadding title">
+              Invoice Information
+            </div>
+          </div>
+          <div class="row">
+          {% block shipping_info %}
+            <div class="equalHWrap eqWrap">
+             {% if order.shipping_address %}
+              <div class="equalHW eq infoblock to-block">
+                <span id="CustomerName">Bill to :</span><br>
+                <span id="AccountProject">Address :</span><br>
+                <span id="CustomerAddress">Email :</span><br>
+                <span id="CustomerPostalCode">Phone : </span><br>
+                <span id="CustomerCountry">Country : </span><br>
+                <span id="CustomerRef">City : </span><br>
+                <span id="CustomerRef">Instructions : </span>
+              </div>
+              <div class="equalHW eq infoblock from-block">
+                <span id="AccountName">{{ order.shipping_address.name }}</span><br>
+                <span id="AccountProject">{{ order.shipping_address.line1 }}</span><br>
+                <span id="AccountAddress">{{ order.shipping_address.guest_email }}</span><br>
+                <span id="AccountPostalCode">{{ order.shipping_address.phone_number }}</span><br>
+                <span id="AccountCountry">{{ order.shipping_address.country }}</span><br>
+                <span id="AccountRef">{{ order.shipping_address.city }}</span><br>
+                <span id="AccountProject">{{ order.shipping_address.notes|linebreaks }}</span><br>
+              </div>
+              {% else %}
+                <p>{% trans "No shipping address required." %}</p>
+              {% endif %}
+              <div class="equalHW eq infoblock info-block" style="text-align: end;">
+                <span id="">شحن الي </span><br>
+                <span id="">العنوان</span><br>
+                <span id="">البريد الالكتروني</span><br>
+                <span id="">هاتف العميل</span><br>
+                <span id="">الدولة</span><br>
+                <span id="">المدينة</span><br>
+                <span id="">تعلميات</span><br>
+              </div>
+            </div>
+          {% endblock %}
+          </div>
+          <table class="table" style="border: 3px solid #ddd;">
+            <tr class="titles">
+              <th>ID</th>
+              <th>Item</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+            </tr>
+           {% for line in order.lines.all %}
+            <tr class="item" id="ProductList">
+              <td id="Product"><span id="ProuductName">{{ line.id }}<span></span></span></td>
+              <td><span id="ProductNumUnits">
+                  <a  href="{{ line.product.get_absolute_url }}">{{ line.description }}</a>
+                  </span>
+              </td>
+              <td><span id="ProductUnit">
+                {% with image=line.product.primary_image %}
+                    {% oscar_thumbnail image.original "200x200" upscale=False as thumb %}
+                    <a href="{{ line.product.get_absolute_url }}">
+                        <img class="thumbnail" src="{{ thumb.url }}" alt="{{ product.get_title }}" style="width: 47%;">
+                    </a>
+                {% endwith %}
+                  </span>
+              </td>
+              <td><span id="ProductUnitPrice">
+                   {% if show_tax_separately %}
+                        {{ line.line_price_before_discounts_excl_tax|currency:order.currency }}
+                   {% else %}
+                         {{ line.line_price_before_discounts_incl_tax|currency:order.currency }}
+                   {% endif %}
+              </span></td>
+              <td><span id="ProductDiscount">{{ line.quantity }}</span></td>
+              <td><span id="ProductTax">{{ order.total_incl_tax|currency:order.currency }}</span></td>
+            </tr>
+           {% endfor %}
+          </table>
+        </div>
+        <div class="row">
+          <div class="equalHWrap eqWrap" style="border-bottom: 2px solid #ccc;">
+            <div class="equalHW eq" style="margin-top: 4%;">
+              <table class="left" style="margin-bottom: 20px;width: 75%;font-size: 20px;">
+                <tr style="line-height: 2;">
+                  <td style="border-top: 2px solid #CCC;margin-right:10px;">Cart Total</td>
+                  <td>
+                       {% if show_tax_separately %}
+                           {{ order.basket_total_excl_tax|currency:order.currency }}
+                       {% else %}
+                            {{ order.basket_total_incl_tax|currency:order.currency }}
+                       {% endif %}
+                  </td>
+                </tr>
+                <tr style="line-height: 2;">
+                  <td style="border-top: 2px solid #CCC;margin-right:10px;">Shipping charge</td>
+                  <td>
+                       {% if show_tax_separately %}
+                            {{ order.shipping_excl_tax|currency:order.currency }}
+                       {% else %}
+                             {{ order.shipping_incl_tax|currency:order.currency }}
+                       {% endif %}
+                  </td>
+                </tr>
+                <tr style="line-height: 2;">
+                  <td style="border-top: 2px solid #CCC;margin-right:10px;">Payment</td>
+                  <td>Payment when you receive the product</td>
+                </tr>
+                <tr style="line-height: 2;">
+                  <td style="border-top: 2px solid #CCC;margin-right:10px;">Order total</td>
+                  <td>{{ order.total_incl_tax|currency:order.currency }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+            <p class="massge">thanks for shopping with us ........</p>
+          <div class="center">
+             <div class="card-footer bg-white">
+               <div class="Social-media">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+                  <a href="#"><i class="fas fa-globe"></i></a>
+                  <a href="#"><i class="fab fa-whatsapp"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fas fa-envelope"></i></a>
+               </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+</html>
+

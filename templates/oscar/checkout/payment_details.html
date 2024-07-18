@@ -1,0 +1,76 @@
+{% extends "oscar/checkout/checkout.html" %}
+{% load i18n %}
+{% load currency_filters %}
+{% block title %}
+    {% trans "Payment details" %} | {{ block.super }}
+{% endblock %}
+
+{% block checkout_nav %}
+    {% include 'oscar/checkout/nav.html' with step=3 %}
+{% endblock %}
+
+{% block checkout_title %}{% trans "Payment Details" %}{% endblock %}
+
+{% block order_contents %}{% endblock %}
+{% block shipping_address %}{% endblock %}
+{% block shipping_method %}{% endblock %}
+{% block payment_method %}{% endblock %}
+            
+{% block payment_details %}
+    {% block payment_details_content %}
+        {% comment %} <p>You will pay your product when you receive it.</p> {% endcomment %}
+
+        <div class="mysr-form"></div>
+        <script>
+            Moyasar.init({
+                // Required
+                // Specify where to render the form
+                // Can be a valid CSS selector and a reference to a DOM element
+                element: '.mysr-form',
+
+                // Required
+                // Amount in the smallest currency unit
+                // For example:
+                // 10 SAR = 10 * 100 Halalas
+                // 10 KWD = 10 * 1000 Fils
+                // 10 JPY = 10 JPY (Japanese Yen does not have fractions)
+                amount: '{{ order_total.incl_tax}}' * 100,
+                        
+                
+                // Required
+                // Currency of the payment transation
+                currency: 'SAR',
+
+
+                // Required
+                // A small description of the current payment process
+                description: 'Payment for Order',
+
+                // Required
+                publishable_api_key: 'pk_test_7tcrrzmB1EhTCX9B9vagzEtt4jRBzJqvMbzL259R',
+
+                // Required
+                // This URL is used to redirect the user when payment process has completed
+                // Payment can be either a success or a failure, which you need to verify on you system (We will show this in a couple of lines)
+                callback_url: 'http://127.0.0.1:8000/checkout/preview/',
+
+                // Optional
+                // Required payments methods
+                // Default: ['creditcard', 'applepay', 'stcpay']
+                methods: [
+                    'creditcard',
+                ],
+                supported_networks: [
+                    'mada',
+                    'visa',
+                ],
+            });
+        </script>
+
+
+        <a id="view_preview" href="{% url 'checkout:preview' %}" class="btn btn-primary btn-lg" style="margin-bottom: 5%;">{% trans "Continue" %}</a>
+    {% endblock payment_details_content %}
+
+
+
+{% endblock payment_details %}
