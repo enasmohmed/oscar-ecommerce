@@ -14,7 +14,7 @@ django-modeltranslation==0.15.1
 django-multiselectfield==0.1.13
 django-oscar==2.0.4
 django-phonenumber-field==2.0.1
-django-tables2==1.22.0
+django-tables2
 django-treebeard==4.3.1
 django-widget-tweaks==1.4.8
 factory-boy==2.12.0
