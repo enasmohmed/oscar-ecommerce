@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/enas/Enas/Test-Ecommerce/env"
+set -gx VIRTUAL_ENV "/media/enas/Data/projects/oscar-ecommerce/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
